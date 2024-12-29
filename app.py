@@ -13,17 +13,32 @@ strm.title("Insurance")
 # Create a button 
 
 
+import streamlit as st
+import base64
+
+
+
+
+
 # Create a button
 if strm.button('Company Presentation'):
     # Display the PDF file
     pdf_file = 'intro.pdf'
+
+    # Read the PDF file and encode it to base64
     with open(pdf_file, "rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+
+# Embed the PDF using an iframe
+    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
+    st.markdown(pdf_display, unsafe_allow_html=True)
+    #with open(pdf_file, "rb") as f:
+       # base64_pdf = base64.b64encode(f.read()).decode('utf-8')
     # Convert PDF pages to images 
-    images = convert_pdf_to_images(pdf_file) 
+    #images = convert_pdf_to_images(pdf_file) 
     # Display images 
-    for image in images: 
-        strm.image(image, use_container_width =True)
+    #for image in images: 
+     #   strm.image(image, use_container_width =True)
     #pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
     #strm.markdown(pdf_display, unsafe_allow_html=True)
 
