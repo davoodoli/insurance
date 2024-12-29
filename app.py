@@ -21,7 +21,7 @@ strm.download_button( label="Company Presentation", data=pdf_bytes, file_name="i
 
 
 strm.title("Insurance Coverages")
-col1, col2, col3,col4 = strm.columns(4)
+col1, col2, col3 = strm.columns(3)
 
 
 with col1:
@@ -39,13 +39,9 @@ with col3:
         pdf_bytes = pdf_file.read()
     strm.download_button( label="Accidental Death", data=pdf_bytes, file_name="ADEATH.pdf", mime="application/pdf" )
 
-with col4:
-    with open("SH.pdf", "rb") as pdf_file: 
-        pdf_bytes = pdf_file.read()
-    strm.download_button( label="Sickness Hospitalization", data=pdf_bytes, file_name="SH.pdf", mime="application/pdf" )
 
 
-col1, col2, col3,col4 = strm.columns(4)
+col1, col2, col3 = strm.columns(3)
 with col1:
     with open("OEA.pdf", "rb") as pdf_file: 
         pdf_bytes = pdf_file.read()
@@ -61,10 +57,27 @@ with col3:
         pdf_bytes = pdf_file.read()
     strm.download_button( label="Cancer Care Protector", data=pdf_bytes, file_name="CP.pdf", mime="application/pdf" )
 
-with col4:
+
+
+col1, col2, col3 = strm.columns(3)
+with col1:
     with open("CI.pdf", "rb") as pdf_file: 
         pdf_bytes = pdf_file.read()
-    strm.download_button( label="Critical Illness ", data=pdf_bytes, file_name="CI.pdf", mime="application/pdf" )
+    strm.download_button( label="Critical Illness", data=pdf_bytes, file_name="CI.pdf", mime="application/pdf" )
+
+with col2:
+    with open("SH.pdf", "rb") as pdf_file: 
+        pdf_bytes = pdf_file.read()
+    strm.download_button( label="Sickness Hospitalization", data=pdf_bytes, file_name="SH.pdf", mime="application/pdf" )
+
+with col3:
+    with open("U_AD_SD.pdf", "rb") as pdf_file: 
+        pdf_bytes = pdf_file.read()
+    strm.download_button( label="Underwriting of CSD,CAD", data=pdf_bytes, file_name="U_AD_SD.pdf", mime="application/pdf" )
+
+with open("U_OT.pdf", "rb") as pdf_file: 
+    pdf_bytes = pdf_file.read()
+    strm.download_button( label="Other Underwritings", data=pdf_bytes, file_name="U_OT.pdf", mime="application/pdf" )
 
 strm.title("Needs Questions")
 strm.markdown('**Q1- If you became sick or were injured and could not work, would you stil receive a paycheque?**')
