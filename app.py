@@ -9,10 +9,8 @@ def convert_pdf_to_images(pdf_path):
     return images
 
 
-strm.title("Insurance")
+strm.title("Combined Insurance Company")
 # Create a button 
-
-
 
 
 
@@ -20,14 +18,53 @@ strm.title("Insurance")
 with open("intro.pdf", "rb") as pdf_file: 
     pdf_bytes = pdf_file.read()
 strm.download_button( label="Company Presentation", data=pdf_bytes, file_name="intro.pdf", mime="application/pdf" )
-#if strm.button('Company Presentation'):
-    # Display the PDF file
-    #pdf_file = 'intro.pdf'
 
-    # Read the PDF file and encode it to base64
-    #with open(pdf_file, "rb") as f:
-       # base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-        
+
+strm.title("Insurance Coverages")
+col1, col2, col3,col4 = strm.columns(4)
+
+
+with col1:
+    with open("AD.pdf", "rb") as pdf_file: 
+        pdf_bytes = pdf_file.read()
+        strm.download_button( label="Accident Disability", data=pdf_bytes, file_name="AD.pdf", mime="application/pdf" )
+
+with col2:
+    with open("AH.pdf", "rb") as pdf_file: 
+        pdf_bytes = pdf_file.read()
+    strm.download_button( label="Accident Hospitalization", data=pdf_bytes, file_name="AH.pdf", mime="application/pdf" )
+
+with col3:
+    with open("ADEATH.pdf", "rb") as pdf_file: 
+        pdf_bytes = pdf_file.read()
+    strm.download_button( label="Accidental Death", data=pdf_bytes, file_name="ADEATH.pdf", mime="application/pdf" )
+
+with col4:
+    with open("SH.pdf", "rb") as pdf_file: 
+        pdf_bytes = pdf_file.read()
+    strm.download_button( label="Sickness Hospitalization", data=pdf_bytes, file_name="SH.pdf", mime="application/pdf" )
+
+
+col1, col2, col3,col4 = strm.columns(4)
+with col1:
+    with open("OEA.pdf", "rb") as pdf_file: 
+        pdf_bytes = pdf_file.read()
+    strm.download_button( label="Outpatient Essentials Accident", data=pdf_bytes, file_name="OEA.pdf", mime="application/pdf" )
+
+with col2:
+    with open("OES.pdf", "rb") as pdf_file: 
+        pdf_bytes = pdf_file.read()
+    strm.download_button( label="Outpatient Essientials Sickness", data=pdf_bytes, file_name="OES.pdf", mime="application/pdf" )
+
+with col3:
+    with open("CP.pdf", "rb") as pdf_file: 
+        pdf_bytes = pdf_file.read()
+    strm.download_button( label="Cancer Care Protector", data=pdf_bytes, file_name="CP.pdf", mime="application/pdf" )
+
+with col4:
+    with open("CI.pdf", "rb") as pdf_file: 
+        pdf_bytes = pdf_file.read()
+    strm.download_button( label="Critical Illness ", data=pdf_bytes, file_name="CI.pdf", mime="application/pdf" )
 
 strm.title("Needs Questions")
 strm.markdown('**Q1- If you became sick or were injured and could not work, would you stil receive a paycheque?**')
