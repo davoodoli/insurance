@@ -1,4 +1,3 @@
 streamlit
 PyPDF2
 pdf2image
-base64
