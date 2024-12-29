@@ -1,5 +1,13 @@
 import streamlit as strm
 import base64
+import PyPDF2 
+from pdf2image import convert_from_path
+
+# Function to convert PDF pages to images 
+def convert_pdf_to_images(pdf_path): 
+    images = convert_from_path(pdf_path) 
+    return images
+
 
 strm.title("Insurance")
 # Create a button 
@@ -11,8 +19,13 @@ if strm.button('Company Presentation'):
     pdf_file = 'intro.pdf'
     with open(pdf_file, "rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-    strm.markdown(pdf_display, unsafe_allow_html=True)
+    # Convert PDF pages to images 
+    images = convert_pdf_to_images(pdf_file) 
+    # Display images 
+    for image in images: 
+        strm.image(image, use_container_width =True)
+    #pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
+    #strm.markdown(pdf_display, unsafe_allow_html=True)
 
 strm.title("Needs Questions")
 strm.markdown('**Q1- If you became sick or were injured and could not work, would you stil receive a paycheque?**')
