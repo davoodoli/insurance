@@ -21,26 +21,17 @@ import base64
 
 
 # Create a button
-if strm.button('Company Presentation'):
+with open("intro.pdf", "rb") as pdf_file: 
+    pdf_bytes = pdf_file.read()
+strm.download_button( label="Company Presentation", data=pdf_bytes, file_name="intro.pdf", mime="application/pdf" )
+#if strm.button('Company Presentation'):
     # Display the PDF file
-    pdf_file = 'intro.pdf'
+    #pdf_file = 'intro.pdf'
 
     # Read the PDF file and encode it to base64
-    with open(pdf_file, "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-
-# Embed the PDF using an iframe
-    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-    st.markdown(pdf_display, unsafe_allow_html=True)
     #with open(pdf_file, "rb") as f:
        # base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-    # Convert PDF pages to images 
-    #images = convert_pdf_to_images(pdf_file) 
-    # Display images 
-    #for image in images: 
-     #   strm.image(image, use_container_width =True)
-    #pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-    #strm.markdown(pdf_display, unsafe_allow_html=True)
+        
 
 strm.title("Needs Questions")
 strm.markdown('**Q1- If you became sick or were injured and could not work, would you stil receive a paycheque?**')
